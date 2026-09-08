@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.py[cod]
+
+# Restricted / large medical assets
+data/oasis-derived/
+data/**/*.nii
+data/**/*.nii.gz
+data/**/*.dcm
+data/**/*metadata*.csv
+*.pt
+*.pth
+
+# Local artifacts
+checkpoints/
+runs/
+wandb/
+.DS_Store
+Thumbs.db
