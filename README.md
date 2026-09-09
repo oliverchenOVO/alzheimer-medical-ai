@@ -11,40 +11,40 @@
 
 MRI 實驗在未使用 TTA 時為 0.9453；五次 TTA 後為 0.9539。以上是課程實驗結果，不代表對外部醫院或不同族群的泛化能力。
 
-## 我做了什么
+## 我做了什麼
 
-### 1. 临床与生活型态资料
+### 1. 臨床與生活型態資料
 
-- 完成资料清理、探索性分析、相关性与特征重要度分析。
-- 比较 Logistic Regression、Random Forest、Gradient Boosting 与 XGBoost。
-- 使用分层切分及 Macro F1，避免只看整体准确率而忽略类别表现。
+- 完成資料清理、探索性分析、相關性與特徵重要度分析。
+- 比較 Logistic Regression、Random Forest、Gradient Boosting 與 XGBoost。
+- 使用分層切分及 Macro F1，避免只看整體準確率而忽略類別表現。
 
-![表格模型比较](results/tabular/model_comparison.png)
+![表格模型比較](results/tabular/model_comparison.png)
 
-![XGBoost 混淆矩阵](results/tabular/confusion_matrix.png)
+![XGBoost 混淆矩陣](results/tabular/confusion_matrix.png)
 
-### 2. MRI 四分类
+### 2. MRI 四分類
 
-- 将目标分为 NonDemented、VeryMildDemented、MildDemented、ModerateDemented。
-- 使用 EfficientNet-B0 迁移学习，并以抽样、类别权重、Focal Loss 与 label smoothing 处理类别不平衡。
-- 分阶段解冻模型，并用 test-time augmentation（TTA）整合预测。
-- 采用病人层级切分的衍生资料，降低同一受试者影像同时出现在训练与验证资料的风险。
+- 將目標分為 NonDemented、VeryMildDemented、MildDemented、ModerateDemented。
+- 使用 EfficientNet-B0 遷移學習，並以抽樣、類別權重、Focal Loss 與 label smoothing 處理類別不平衡。
+- 分階段解凍模型，並用 test-time augmentation（TTA）整合預測。
+- 採用病人層級切分的衍生資料，降低同一受試者影像同時出現在訓練與驗證資料的風險。
 
-![MRI 训练曲线](results/mri/training_curves_C.png)
+![MRI 訓練曲線](results/mri/training_curves_C.png)
 
-![MRI TTA 混淆矩阵](results/mri/confusion_matrix_tta_C.png)
+![MRI TTA 混淆矩陣](results/mri/confusion_matrix_tta_C.png)
 
-## 资料夹结构
+## 資料夾結構
 
 ```text
-data/tabular/       可随专案发布的合成临床 CSV
-notebooks/          两个实验的完整 Notebook
-results/tabular/    表格实验图表
-results/mri/        MRI 实验的汇总图表（不含原始 MRI）
-docs/               资料来源、授权与公开检查说明
+data/tabular/       可隨專案發布的合成臨床 CSV
+notebooks/          兩個實驗的完整 Notebook
+results/tabular/    表格實驗圖表
+results/mri/        MRI 實驗的彙總圖表（不含原始 MRI）
+docs/               資料來源、授權與公開檢查說明
 ```
 
-## 运行方式
+## 執行方式
 
 ```bash
 python -m venv .venv
@@ -53,8 +53,8 @@ pip install -r requirements.txt
 jupyter lab
 ```
 
-表格 Notebook 可直接读取仓库内的 CSV。MRI Notebook 预期资料放在 `data/oasis-derived/`；请依 [资料来源说明](docs/DATA_SOURCES.md) 自行申请／下载，仓库不会重新散布 MRI 或受试者 metadata。
+表格 Notebook 可直接讀取倉庫內的 CSV。MRI Notebook 預期資料放在 `data/oasis-derived/`；請依 [資料來源說明](docs/DATA_SOURCES.md) 自行申請／下載，倉庫不會重新散布 MRI 或受試者 metadata。
 
-## 公开与引用
+## 公開與引用
 
-发布前请阅读 [DATA_SOURCES.md](docs/DATA_SOURCES.md) 与 [PUBLICATION_CHECKLIST.md](docs/PUBLICATION_CHECKLIST.md)。仓库内各资料不一定采用相同授权；临床 CSV 适用 CC BY 4.0，程式与课程内容的再授权则需另行确认。
+發布前請閱讀 [DATA_SOURCES.md](docs/DATA_SOURCES.md) 與 [PUBLICATION_CHECKLIST.md](docs/PUBLICATION_CHECKLIST.md)。倉庫內各資料不一定採用相同授權；臨床 CSV 適用 CC BY 4.0，程式與課程內容的再授權則需另行確認。
